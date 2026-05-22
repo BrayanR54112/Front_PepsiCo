@@ -5,10 +5,6 @@ export function ProtectedRoute({ allowedRole }: { allowedRole?: "ADMIN" | "STORE
   const { isAuthenticated, user, hasHydrated } = useAuthStore();
 
   
-  if (!hasHydrated) {
-    return <div>Loading...</div>; 
-  }
-
   if (!isAuthenticated || !user) {
     return <Navigate to="/login" replace />;
   }
