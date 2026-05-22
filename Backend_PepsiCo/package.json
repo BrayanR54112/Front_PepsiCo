@@ -1,0 +1,9 @@
+{
+  "name": "pepsico-backend",
+  "version": "1.0.0",
+  "description": "Backend Serverless Básico para PepsiCo B2B",
+  "type": "module",
+  "scripts": {
+    "start": "echo 'Deploy con Vercel'"
+  }
+}
