@@ -9,21 +9,26 @@ export function Login() {
   const login = useAuthStore((state) => state.login);
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleLogin = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (email === "admin@pepsico.com" && password === "admin123") {
-      login({ id: "admin1", email, name: "Administrador Central", role: "ADMIN" });
-      toast.success("Bienvenido Administrador");
+  try {
+    await login(email, password);
+
+    const user = useAuthStore.getState().user;
+
+    if (user?.role === "ADMIN") {
       navigate("/admin");
-    } else if (email === "tienda@pepsico.com" && password === "tienda123") {
-      login({ id: "tienda1", email, name: 'Tienda "La Bendición"', role: "STORE_OWNER" });
-      toast.success("Bienvenido a PepsiCo B2B");
-      navigate("/");
+      toast.success("Bienvenido Administrador");
     } else {
-      toast.error("Credenciales incorrectas");
+      navigate("/");
+      toast.success("Bienvenido a PepsiCo B2B");
     }
-  };
+
+  } catch (error: any) {
+    toast.error(error.message || "Error en login");
+  }
+};
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-slate-50 font-sans">

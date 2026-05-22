@@ -29,7 +29,7 @@ export const useAuthStore = create<AuthState>()(
       isAuthenticated: false,
       
       login: async (email, password) => {
-        const response = await fetchApi('/auth/login', {
+        const response = await fetchApi('/auth/login.js', {
           method: 'POST',
           body: JSON.stringify({ email, password })
         });
