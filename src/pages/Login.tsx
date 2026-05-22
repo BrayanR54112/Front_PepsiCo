@@ -53,7 +53,7 @@ export function Login() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@pepsico.com o tienda@pepsico.com"
+                placeholder="Correo Electrónico"
                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition-colors focus:border-[#005CB4] focus:bg-white"
               />
             </div>
